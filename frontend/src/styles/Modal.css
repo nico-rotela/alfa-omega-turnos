@@ -1,0 +1,157 @@
+/* ========================
+   MODAL OVERLAY
+======================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* oscurece el fondo cuando abre el modal */
+  background: rgba(0, 0, 0, 0.75);
+
+  padding: 16px;
+}
+
+/* ========================
+   MODAL
+======================== */
+
+.modal {
+  width: 100%;
+  max-width: 400px;
+
+  background: #303030;
+
+  color: var(--text);
+
+  border: 1px solid #2f2f2f;
+
+  border-radius: 16px;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ========================
+   TITULO
+======================== */
+
+.modal-title {
+  margin: 0;
+
+  text-align: center;
+
+  color: var(--text);
+}
+
+/* ========================
+   INFO
+======================== */
+
+.modal-info {
+  text-align: center;
+
+  margin: 0;
+
+  color: var(--text-secondary);
+}
+
+/* ========================
+   INPUTS
+======================== */
+
+.modal-input {
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid #333;
+  border-radius: 8px;
+
+  font-size: 16px;
+
+  background: #181818;
+
+  color: var(--text);
+}
+
+/* ========================
+   PLACEHOLDER
+======================== */
+
+.modal-input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* ========================
+   BOTONES
+======================== */
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ========================
+   BOTON GUARDAR
+======================== */
+
+.btn-primary {
+  border: none;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  background: var(--accent);
+
+  color: #111111;
+
+  font-weight: bold;
+}
+
+/* ========================
+   BOTON CANCELAR
+======================== */
+
+.btn-secondary {
+  border: 1px solid #4a4a4a;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  background: #2a2a2a;
+
+  color: var(--text);
+}
+
+/* ========================
+   BOTON ELIMINAR
+======================== */
+
+.btn-danger {
+  border: none;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  background: #8b2f2f;
+
+  color: white;
+}
