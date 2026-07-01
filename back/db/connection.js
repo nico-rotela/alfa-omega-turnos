@@ -13,7 +13,7 @@ export const pool = new Pool({
 pool
   .query("SELECT NOW()")
   .then((res) => {
-    console.log("Conexión exitosa a la base de datos:", res.rows[0]);
+    console.log("Conexión exitosa a la base de datos:");
   })
   .catch((err) => {
     console.error("Error al conectar a la base de datos:", err);

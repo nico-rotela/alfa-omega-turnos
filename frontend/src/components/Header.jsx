@@ -1,16 +1,27 @@
 import "../styles/Header.css";
 import logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 function Header({ fecha, onPrevDay, onNextDay }) {
-  const fechaFormateada = new Date(fecha).toLocaleDateString("es-AR", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-  });
+  const navigate = useNavigate();
+
+  const fechaFormateada = new Date(fecha.replace(/-/g, "/")).toLocaleDateString(
+    "es-AR",
+    {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+    },
+  );
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   const getEtiquetaFecha = () => {
     const hoy = new Date();
-    const fechaActual = new Date(fecha);
+    const fechaActual = new Date(fecha.replace(/-/g, "/"));
 
     hoy.setHours(0, 0, 0, 0);
     fechaActual.setHours(0, 0, 0, 0);
@@ -42,6 +53,7 @@ function Header({ fecha, onPrevDay, onNextDay }) {
         <button className="nav-btn" onClick={onNextDay}>
           ▶
         </button>
+        <button onClick={handleLogout}>Cerrar sesión</button>
       </div>
     </header>
   );

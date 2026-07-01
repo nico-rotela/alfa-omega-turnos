@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { registerUser, loginUser } from "../controller/auth_controller.js";
+
+const router = Router();
+
+// Ruta para registrar un nuevo usuario
+router.post("/register", registerUser);
+
+// Ruta para iniciar sesión
+router.post("/login", loginUser);
+export default router;

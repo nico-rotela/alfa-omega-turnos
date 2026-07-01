@@ -10,6 +10,7 @@ import EditarTurno from "./components/EditarTurno.jsx";
 import CrearTurnoModal from "./components/CrearTurnoModal.jsx";
 import Header from "./components/Header.jsx";
 import "./styles/App.css";
+import { API_URL } from "./config/api.js";
 
 function App() {
   // ======================================
@@ -55,7 +56,7 @@ function App() {
     const loadData = async () => {
       const turnosData = await fetchTurnos();
 
-      const res = await fetch("http://localhost:3000/api/horarios");
+      const res = await fetch(`${API_URL}/api/horarios`);
       const horariosData = await res.json();
 
       setTurnos(turnosData);
@@ -143,27 +144,6 @@ function App() {
   const getTurnoPorHora = (hora) => {
     return turnosDelDdia.find((t) => t.hora === hora);
   };
-
-  // handle submit del form (antiguo)
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   // valido que este vacio el campo de hora
-  //   if (!horaSeleccionada) {
-  //     alert("Seleccioná un horario");
-  //     return;
-  //   }
-
-  //   const form = e.target;
-
-  //   const turno = {
-  //     cliente: form.cliente.value,
-  //     hora: horaSeleccionada,
-  //     fecha: fecha,
-  //   };
-
-  //   handleCreate(turno);
-  // }
 
   // ======================================
   // RENDER
