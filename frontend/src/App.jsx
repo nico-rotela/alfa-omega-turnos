@@ -46,7 +46,7 @@ function App() {
 
   // retrocede un día
   const handlePrevDay = () => {
-    const nuevaFecha = new Date(fecha);
+    const nuevaFecha = new Date(fecha.replace(/-/g, "/")); // Reemplazo guiones por barras para evitar problemas de compatibilidad
     nuevaFecha.setDate(nuevaFecha.getDate() - 1);
     nuevaFecha.setHours(0, 0, 0, 0);
 
@@ -57,7 +57,7 @@ function App() {
 
   // avanza un día
   const handleNextDay = () => {
-    const nuevaFecha = new Date(fecha);
+    const nuevaFecha = new Date(fecha.replace(/-/g, "/")); // Reemplazo guiones por barras para evitar problemas de compatibilidad
     nuevaFecha.setDate(nuevaFecha.getDate() + 1);
     nuevaFecha.setHours(0, 0, 0, 0);
 
