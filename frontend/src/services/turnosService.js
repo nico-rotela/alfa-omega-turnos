@@ -9,11 +9,19 @@ export const fetchTurnos = async () => {
   if (!token) {
     throw new Error("No token found. Please log in.");
   }
+
   const response = await fetch(`${API_URL}/api/turnos`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
+
+  if (response.status === 401 || response.status === 403) {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+    return [];
+  }
+
   return response.json();
 };
 

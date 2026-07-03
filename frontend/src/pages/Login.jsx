@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { login } from "../services/authService.js";
 import { useNavigate } from "react-router-dom";
+import "../styles/Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -13,11 +15,8 @@ function Login() {
     try {
       const data = await login(email, password);
 
-      // Almacena el token en localStorage para futuras solicitudes autenticadas
       localStorage.setItem("token", data.token);
 
-      console.log(data);
-      // Redirige al usuario a la página de inicio después del inicio de sesión exitoso
       navigate("/");
     } catch (error) {
       alert(error.message);
@@ -25,25 +24,33 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Iniciar Sesión</h2>
+    <div className="login-container">
+      <form className="login-card" onSubmit={handleSubmit}>
+        <h1 className="login-title">ALFA & ΩMEGA</h1>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <p className="login-subtitle">Iniciar sesión</p>
 
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <input
+          className="login-input"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <button type="submit">Ingresar</button>
-    </form>
+        <input
+          className="login-input"
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button className="login-btn" type="submit">
+          Ingresar
+        </button>
+      </form>
+    </div>
   );
 }
 

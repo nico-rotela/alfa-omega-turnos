@@ -11,8 +11,11 @@ import CrearTurnoModal from "./components/CrearTurnoModal.jsx";
 import Header from "./components/Header.jsx";
 import "./styles/App.css";
 import { API_URL } from "./config/api.js";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const navigate = useNavigate();
+
   // ======================================
   // ESTADOS
   // ======================================
@@ -31,10 +34,23 @@ function App() {
   // NAVEGACIÓN DE FECHAS
   // ======================================
 
+  // defino hoy, ayer y pasado mañana para poder deshabilitar botones de navegación
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+
+  const ayer = new Date(hoy);
+  ayer.setDate(ayer.getDate() - 1);
+
+  const pasadoManana = new Date(hoy);
+  pasadoManana.setDate(pasadoManana.getDate() + 2);
+
   // retrocede un día
   const handlePrevDay = () => {
     const nuevaFecha = new Date(fecha);
     nuevaFecha.setDate(nuevaFecha.getDate() - 1);
+    nuevaFecha.setHours(0, 0, 0, 0);
+
+    if (nuevaFecha < ayer) return;
 
     setFecha(nuevaFecha.toISOString().split("T")[0]);
   };
@@ -43,6 +59,9 @@ function App() {
   const handleNextDay = () => {
     const nuevaFecha = new Date(fecha);
     nuevaFecha.setDate(nuevaFecha.getDate() + 1);
+    nuevaFecha.setHours(0, 0, 0, 0);
+
+    if (nuevaFecha > pasadoManana) return;
 
     setFecha(nuevaFecha.toISOString().split("T")[0]);
   };
@@ -146,6 +165,15 @@ function App() {
   };
 
   // ======================================
+  // LOGOUT
+  // ======================================
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
+  // ======================================
   // RENDER
   // ======================================
 
@@ -201,6 +229,11 @@ function App() {
           onCreate={handleCreate}
         />
       )}
+
+      {/* logout button */}
+      <button className="logout-btn" onClick={handleLogout}>
+        Cerrar sesión
+      </button>
     </div>
   );
 }
