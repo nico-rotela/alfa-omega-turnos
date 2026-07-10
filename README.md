@@ -21,8 +21,17 @@ El objetivo del proyecto fue crear una agenda moderna, simple e intuitiva para a
 
 ## 📸 Vista previa
 
-Próximamente se agregarán capturas de pantalla de la aplicación.
+### Login
+![Login](./assets/login.png)
 
+### Principal
+![Principal](./assets/Principal.png)
+
+### Crear Turno
+![Crear Turno](./assets/crear_turno.png)
+
+### Editar Turno
+![Editar Turno](./assets/editar_turno.png)
 ---
 
 ## 🛠 Tecnologías utilizadas
